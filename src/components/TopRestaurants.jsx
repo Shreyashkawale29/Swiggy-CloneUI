@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa6";
-import Card from './Card';
+import Card from "./Card";
 
 export default function TopRestaurants() {
-
   // const [categories, setCategory] = useState([]);
   const [slide, setSlide] = useState(0);
 
@@ -20,18 +19,15 @@ export default function TopRestaurants() {
 
   const [data, setData] = useState([]);
 
-  const fetchTopRestraurant = async () =>{
-    const response = await fetch("http://localhost:5000/top-restaurant-chains"); 
+  const fetchTopRestraurant = async () => {
+    const response = await fetch({ BACKEND_URL } + `/top-restaurant-chains`);
     const apiData = await response.json();
     setData(apiData);
-    
-  }
+  };
 
-  useEffect(
-    ()=>{
-      fetchTopRestraurant();
-    },[]
-  )
+  useEffect(() => {
+    fetchTopRestraurant();
+  }, []);
 
   return (
     <div className="max-w-[1200px] mx-auto cursor-pointer px-2">
