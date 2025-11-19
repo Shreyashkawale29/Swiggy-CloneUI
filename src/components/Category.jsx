@@ -7,7 +7,7 @@ export default function Category() {
     const [slide, setSlide] = useState(0);
 
     const fetchcategory = async () =>{
-        const response = await fetch({BACKEND_URL}+`/categories`);
+        const response = await fetch(`${BACKEND_URL}/categories`);
         const data = await response.json();
         setCategory(data);
 

@@ -7,7 +7,7 @@ export default function OnlineDelivary() {
   const [data, setData] = useState([]);
 
   const fetchTopRestraurant = async () => {
-    const response = await fetch({BACKEND_URL}+`/top-restaurant-chains`);
+    const response = await fetch(`${BACKEND_URL}/top-restaurant-chains`);
     const apiData = await response.json();
     setData(apiData);
   };
