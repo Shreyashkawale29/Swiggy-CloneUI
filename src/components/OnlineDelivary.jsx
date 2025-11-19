@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Card from "./Card";
 
 export default function OnlineDelivary() {
+
+    const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
   const [data, setData] = useState([]);
 
   const fetchTopRestraurant = async () => {

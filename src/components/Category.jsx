@@ -29,6 +29,8 @@ export default function Category() {
         setSlide(slide - 3);
     };
 
+    const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
     
   return (
     <div className="max-w-[1200px] mx-auto cursor-pointer">

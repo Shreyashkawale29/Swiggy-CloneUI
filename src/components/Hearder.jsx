@@ -41,6 +41,9 @@ export default function Hearder() {
       sup:"(0)"
     },
   ];
+
+  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
   return (
     <>
       <div

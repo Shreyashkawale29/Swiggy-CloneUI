@@ -1,8 +1,12 @@
-import React from 'react'
+import React from 'react';
+
 
 
 export default function Card(props) {
+    const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
   return (
+    
     <div className={`${props.width} shrink-0 mb-3`}>
       <div className="group h-[182px] rounded-[15px] overflow-hidden relative">
         <img
