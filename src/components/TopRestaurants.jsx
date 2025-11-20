@@ -1,39 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa6";
-import Card from './Card';
+import Card from "./Card";
 
 export default function TopRestaurants() {
-
-  // const [categories, setCategory] = useState([]);
   const [slide, setSlide] = useState(0);
-
-  const nextSlide = () => {
-    console.log(data.length);
-    if (data.length - 8 == slide) return false;
-    setSlide(slide + 3);
-  };
-
-  const prevSlide = () => {
-    if (slide == 0) return false;
-    setSlide(slide - 3);
-  };
-
   const [data, setData] = useState([]);
   const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
+  const nextSlide = () => {
+    if (slide >= data.length - 2) return; // stops sliding after last 2
+    setSlide(slide + 2);
+  };
 
-  const fetchTopRestraurant = async () =>{
-    const response = await fetch(`${BACKEND_URL}/top-restaurant-chains`); 
+  const prevSlide = () => {
+    if (slide === 0) return;
+    setSlide(slide - 2);
+  };
+
+  const fetchTopRestraurant = async () => {
+    const response = await fetch(`${BACKEND_URL}/top-restaurant-chains`);
     const apiData = await response.json();
     setData(apiData);
-    
-  }
+  };
 
-  useEffect(
-    ()=>{
-      fetchTopRestraurant();
-    },[]
-  )
+  useEffect(() => {
+    fetchTopRestraurant();
+  }, []);
 
   return (
     <div className="max-w-[1200px] mx-auto cursor-pointer px-2">
@@ -61,14 +53,13 @@ export default function TopRestaurants() {
         <div
           className="flex gap-5 transition-transform duration-500"
           style={{
-            transform: `translateX(-${slide * 100}%)`, // SLIDER WORKS NOW
+            transform: `translateX(-${slide * 273}px)`, // move 2 items per slide
           }}
         >
           {data.map((data, index) => {
             return <Card width="w-full md:w-[273px]" {...data} key={index} />;
           })}
         </div>
-        <hr className="my-4" />
       </div>
     </div>
   );
