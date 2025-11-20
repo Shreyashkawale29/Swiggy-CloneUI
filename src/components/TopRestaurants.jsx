@@ -8,12 +8,12 @@ export default function TopRestaurants() {
   const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
   const nextSlide = () => {
-    if (slide >= data.length - 3) return; // stops sliding after last 2
+    if (slide >= data.length - 3) return false; // stops sliding after last 2
     setSlide(slide + 2);
   };
 
   const prevSlide = () => {
-    if (slide === 0) return;
+    if (slide === 0) return false;
     setSlide(slide - 2);
   };
 
