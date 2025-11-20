@@ -2,36 +2,32 @@ import React, { useEffect, useState } from "react";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa6";
 
 export default function Category() {
-    const [categories, setCategory] = useState([]);
+  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+  const [categories, setCategory] = useState([]);
 
-    const [slide, setSlide] = useState(0);
+  const [slide, setSlide] = useState(0);
 
-    const fetchcategory = async () =>{
-        const response = await fetch(`${BACKEND_URL}/categories`);
-        const data = await response.json();
-        setCategory(data);
+  const fetchcategory = async () => {
+    const response = await fetch(`${BACKEND_URL}/categories`);
+    const data = await response.json();
+    setCategory(data);
+  };
 
-    }
+  useEffect(() => {
+    fetchcategory();
+  }, []);
 
-    useEffect(() => {
-      fetchcategory();
-    }, []);
+  const nextSlide = () => {
+    console.log(categories.length);
+    if (categories.length - 8 == slide) return false;
+    setSlide(slide + 3);
+  };
 
+  const prevSlide = () => {
+    if (slide == 0) return false;
+    setSlide(slide - 3);
+  };
 
-    const nextSlide = () =>{
-        console.log(categories.length);
-        if(categories.length - 8 == slide) return false;
-        setSlide(slide + 3);
-    }
-
-    const prevSlide = () => {
-        if(slide == 0) return false;
-        setSlide(slide - 3);
-    };
-
-    const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-
-    
   return (
     <div className="max-w-[1200px] mx-auto cursor-pointer">
       <div className="my-3 flex items-center justify-between">
