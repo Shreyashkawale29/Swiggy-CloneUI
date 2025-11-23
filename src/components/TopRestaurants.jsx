@@ -8,7 +8,7 @@ export default function TopRestaurants() {
   const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
   const nextSlide = () => {
-    if (slide >= data.length - 3) return false; // stops sliding after last 2
+    if (slide >= data.length - 4) return false; // stops sliding after last 2
     setSlide(slide + 2);
   };
 
@@ -53,7 +53,7 @@ export default function TopRestaurants() {
         <div
           className="flex gap-5 transition-transform duration-500"
           style={{
-            transform: `translateX(-${slide * 273}px)`, // move 2 items per slide
+            transform: `translateX(-${slide * 290}px)`, // move 2 items per slide
           }}
         >
           {data.map((data, index) => {
